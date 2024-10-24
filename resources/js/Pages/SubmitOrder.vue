@@ -118,7 +118,7 @@
     const submit = () => {
         form.post(route('orders.store'), {
             onSuccess: () => {
-                // form.reset();
+                form.reset();
             },
             onError: (errors) => {
                 console.log(errors);
