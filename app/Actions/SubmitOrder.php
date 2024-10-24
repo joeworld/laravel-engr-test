@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Http\Requests\SubmitOrderRequest;
+use App\Jobs\SendOrderEmail;
 use App\Models\Order;
 use App\Models\Batch;
 use App\Models\OrderItem;
@@ -68,7 +69,7 @@ class SubmitOrder
         $order->update(['order_amount' => $orderAmount]);
 
         // Send email
-        //// Email to be sent /////
+        SendOrderEmail::dispatch($order);
 
         return $order;
     }
