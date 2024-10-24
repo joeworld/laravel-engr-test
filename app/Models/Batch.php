@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hmo extends Model
+class Batch extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'code',
-        'batch_criteria',
+        'provider_name',
+        'batch_name',
+        'batch_month',
+        'batch_year',
     ];
 
     /**
-     * Get the orders associated with the HMO.
+     * Get the orders associated with the batch.
      */
     public function orders()
     {

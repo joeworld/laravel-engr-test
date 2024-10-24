@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hmos', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('code')->unique();
-            $table->string('batching_criteria')->default('submission_date'); // Can be submission_date or encounter_date
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->string('item_name');
+            $table->decimal('unit_price', 10, 2);
+            $table->integer('quantity');
+            $table->decimal('subtotal', 10, 2);
             $table->timestamps();
-        });
+        });        
     }
 
     /**
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hmos');
+        Schema::dropIfExists('order_items');
     }
 };
